@@ -12,7 +12,7 @@ body {
 /* Modo escuro */
 body.dark-mode {
     background: linear-gradient(135deg, #1c1c1c, #121212); /* Gradiente para o modo escuro */
-    color: #ffffff;
+    color: #080606;
 }
 
 /* Cabeçalho */
@@ -53,7 +53,7 @@ header h1 span {
     color: #f0f0f0 !important;
 }
 
-/* Seções */
+/* Seções (Boas-vindas, Depoimentos e Contato) */
 section {
     padding: 80px 20px; /* Mais espaçamento e ajuste para mobile */
     margin: 20px 0;
@@ -63,7 +63,7 @@ section {
 section h2 {
     font-size: 28px;
     font-weight: bold;
-    color: #333;
+    color: #090505;
     margin-bottom: 20px;
 }
 
@@ -72,27 +72,32 @@ section h2 {
 #imoveis img {
     max-width: 100%;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(7, 4, 4, 0.1);
     object-fit: cover; /* Garante que a imagem se ajusta corretamente */
+    display: block; /* Garante que a imagem seja tratada como um bloco */
+    margin-left: auto;
+    margin-right: auto; /* Centraliza as imagens horizontalmente */
 }
 
 /* Carrossel */
 .carousel-item img {
     max-height: 400px;
     object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; /* Centraliza as imagens dentro do carrossel */
+    width: 80%; /* Ajusta o tamanho da imagem dentro do carrossel */
 }
-
 
 /* Footer */
 footer {
-    background-color: #333;
-    color: white;
+    background-color: #0f0a0a;
+    color: rgb(8, 4, 4);
     padding: 20px 0;
     text-align: center;
     font-size: 14px;
     transition: background-color 0.3s ease-in-out;
 }
-
 
 /* Estilos adicionais para o modo escuro */
 body.dark-mode .navbar {
@@ -181,3 +186,28 @@ a:hover {
     }
 }
 
+/* Ajustes no modo escuro para melhorar a legibilidade */
+body.dark-mode section h2,
+body.dark-mode footer,
+body.dark-mode a,
+body.dark-mode .card,
+body.dark-mode .cta-button {
+    color: #ffffff !important; /* Garante que o texto ficará visível */
+}
+
+body.dark-mode .cta-button {
+    background-color: #ff6f00 !important;
+}
+
+body.dark-mode .cta-button:hover {
+    background-color: #e65c00 !important;
+}
+
+/* Fundo igual no modo escuro para as seções de boas-vindas, depoimento e contato */
+body.dark-mode header,
+body.dark-mode .boas-vindas,
+body.dark-mode .depoimentos,
+body.dark-mode .contato {
+    background: linear-gradient(135deg, #1c1c1c, #121212) !important; /* Fundo escuro para todas as seções */
+    color: #ffffff; /* Texto branco */
+}

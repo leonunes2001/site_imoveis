@@ -2,42 +2,42 @@
 const toggleMode = document.getElementById('modeToggle');
 const body = document.body;
 
-function setTheme(theme) {
-    body.classList.toggle('dark-mode', theme === 'dark');
-    localStorage.setItem('theme', theme);
-}
-
+// Verifica e aplica a preferência de tema salva no localStorage
 if (localStorage.getItem('theme') === 'dark') {
-    setTheme('dark');
+    body.classList.add('dark-mode');
 }
 
-toggleMode.addEventListener('click', () => {
-    const newTheme = body.classList.contains('dark-mode') ? 'light' : 'dark';
-    setTheme(newTheme);
+// Alterna entre modo claro e escuro
+toggleMode.addEventListener('click', function () {
+    body.classList.toggle('dark-mode');
+    if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
 });
 
 // Scroll Suave para Navegação
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', (e) => {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
     });
 });
 
-// Scroll Reveal - Animações ao Rolagem com IntersectionObserver
+// Scroll Reveal - Animações ao Rolagem
 const revealElements = document.querySelectorAll('.reveal');
-const observerOptions = { threshold: 0.1 };
-
-const observerCallback = (entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
+window.addEventListener('scroll', function () {
+    const windowHeight = window.innerHeight;
+    revealElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 150) {
+            element.classList.add('active');
         }
     });
-};
-
-const observer = new IntersectionObserver(observerCallback, observerOptions);
-revealElements.forEach(element => observer.observe(element));
+});
 
 // Carrossel de Depoimentos
 let currentIndex = 0;
@@ -48,31 +48,23 @@ function showTestimonial() {
     });
     currentIndex = (currentIndex + 1) % testimonials.length;
 }
-
-let testimonialInterval = setInterval(showTestimonial, 5000);
+setInterval(showTestimonial, 5000);
 showTestimonial();
 
-// Adicionar a interação com o carrossel
-document.getElementById('nextTestimonial').addEventListener('click', () => {
-    clearInterval(testimonialInterval);
-    currentIndex = (currentIndex + 1) % testimonials.length;
-    showTestimonial();
-    testimonialInterval = setInterval(showTestimonial, 5000);
-});
-
-// Validação de Formulário de Contato com Mensagens de Erro
-document.getElementById("contactForm").addEventListener("submit", (event) => {
+// Formulário de Contato com Validação
+document.getElementById("contactForm").addEventListener("submit", function (event) {
     event.preventDefault();
-    const email = document.getElementById("email");
-    const message = document.getElementById("message");
-
-    if (!email.value || !message.value) {
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+    
+    if (!email || !message) {
         alert("Por favor, preencha todos os campos.");
         return;
     }
 
+    // Validação simples de e-mail
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    if (!emailPattern.test(email.value)) {
+    if (!emailPattern.test(email)) {
         alert("Por favor, insira um e-mail válido.");
         return;
     }
@@ -82,25 +74,23 @@ document.getElementById("contactForm").addEventListener("submit", (event) => {
 
 // Menu de Navegação Fixo (Sticky)
 const navbar = document.querySelector('.navbar');
-window.addEventListener('scroll', () => {
-    navbar.classList.toggle('sticky', window.scrollY > 0);
+window.addEventListener('scroll', function () {
+    if (window.scrollY > 0) {
+        navbar.classList.add('sticky');
+    } else {
+        navbar.classList.remove('sticky');
+    }
 });
 
 // Notificação de Boas-Vindas
 if (!localStorage.getItem('visited')) {
-    const welcomeMessage = document.createElement('div');
-    welcomeMessage.className = 'welcome-message';
-    welcomeMessage.innerHTML = 'Bem-vindo ao nosso site! <button id="closeWelcome">X</button>';
-    document.body.appendChild(welcomeMessage);
-    document.getElementById('closeWelcome').addEventListener('click', () => {
-        welcomeMessage.remove();
-    });
+    alert("Bem-vindo ao nosso site! Esperamos que você tenha uma ótima experiência.");
     localStorage.setItem('visited', 'true');
 }
 
 // Animação de Scroll (Parallax)
 const parallaxElements = document.querySelectorAll('.parallax');
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll', function () {
     parallaxElements.forEach(element => {
         const speed = element.getAttribute('data-speed');
         element.style.transform = `translateY(${window.scrollY * speed}px)`;
@@ -110,27 +100,36 @@ window.addEventListener('scroll', () => {
 // Pesquisa Interativa
 document.getElementById("searchInput").addEventListener("input", function () {
     const query = this.value.toLowerCase();
-    document.querySelectorAll('.searchable').forEach(item => {
-        item.style.display = item.textContent.toLowerCase().includes(query) ? 'block' : 'none';
+    const items = document.querySelectorAll('.searchable');
+    items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(query)) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
     });
 });
 
 // Animação de Carregamento
-window.addEventListener('load', () => {
+window.addEventListener('load', function () {
     const loader = document.getElementById("loader");
-    loader.style.display = 'none'; 
+    loader.style.display = 'none'; // Esconde o carregamento após o site carregar
 });
 
-// Função original do formulário de Admin
-document.getElementById("adminForm").addEventListener("submit", (event) => {
+// Função original do formulário
+document.getElementById("adminForm").addEventListener("submit", function (event) {
     event.preventDefault();
 
+    // Obtendo valores do formulário
     const descricao = document.getElementById("descricao").value;
     const foto = document.getElementById("foto").files[0];
     const video = document.getElementById("video").files[0];
 
+    // Atualizando o Preview
     document.getElementById("previewDescricao").innerText = descricao;
 
+    // Preview da Foto
     if (foto) {
         const fotoPreview = document.getElementById("previewFoto");
         fotoPreview.src = URL.createObjectURL(foto);
@@ -139,6 +138,7 @@ document.getElementById("adminForm").addEventListener("submit", (event) => {
         document.getElementById("previewFoto").style.display = "none";
     }
 
+    // Preview do Vídeo
     if (video) {
         const videoPreview = document.getElementById("previewVideo");
         videoPreview.src = URL.createObjectURL(video);
@@ -147,5 +147,5 @@ document.getElementById("adminForm").addEventListener("submit", (event) => {
         document.getElementById("previewVideo").style.display = "none";
     }
 
-    alert("Conteúdo salvo com sucesso!");
+    alert("Conteúdo salvo com sucesso! (Este é apenas um exemplo, funcionalidade completa exigirá backend)");
 });
