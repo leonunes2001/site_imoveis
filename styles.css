@@ -4,7 +4,7 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #f1f1f1, #e0e0e0); /* Gradiente suave para o modo claro */
+    background: linear-gradient(135deg, #f1f1f1, #e9aa7a); /* Gradiente suave para o modo claro */
     transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
     color: #333;
 }
@@ -17,7 +17,7 @@ body.dark-mode {
 
 /* Cabeçalho */
 header {
-    background-color: #f8f9fa;
+    background-color: #080b0e;
     padding: 50px 0;
     text-align: center;
     transition: background-color 0.3s ease-in-out;
@@ -45,12 +45,12 @@ header h1 span {
 }
 
 .navbar .nav-link {
-    color: white !important;
+    color: rgb(7, 4, 4) !important;
     transition: color 0.3s ease-in-out;
 }
 
 .navbar .nav-link:hover {
-    color: #f0f0f0 !important;
+    color: #120808 !important;
 }
 
 /* Seções (Boas-vindas, Depoimentos e Contato) */
@@ -109,11 +109,11 @@ body.dark-mode footer {
 }
 
 body.dark-mode .navbar .nav-link {
-    color: #fff !important;
+    color: #0a0505 !important;
 }
 
 body.dark-mode .navbar .nav-link:hover {
-    color: #f0f0f0 !important;
+    color: #060303 !important;
 }
 
 /* Alteração no modo escuro para adicionar imagem de fundo */
@@ -138,7 +138,7 @@ a:hover {
 /* Botões chamativos */
 .cta-button {
     background-color: #ff6f00;
-    color: white;
+    color: rgb(17, 9, 9);
     padding: 15px 30px;
     border-radius: 30px;
     border: none;
@@ -192,7 +192,7 @@ body.dark-mode footer,
 body.dark-mode a,
 body.dark-mode .card,
 body.dark-mode .cta-button {
-    color: #ffffff !important; /* Garante que o texto ficará visível */
+    color: #fdfbfb !important; /* Garante que o texto ficará visível */
 }
 
 body.dark-mode .cta-button {
@@ -209,5 +209,5 @@ body.dark-mode .boas-vindas,
 body.dark-mode .depoimentos,
 body.dark-mode .contato {
     background: linear-gradient(135deg, #1c1c1c, #121212) !important; /* Fundo escuro para todas as seções */
-    color: #ffffff; /* Texto branco */
+    color: #0d0707; /* Texto branco */
 }
