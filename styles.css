@@ -1,0 +1,183 @@
+/* Estilos gerais */
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f1f1f1, #e0e0e0); /* Gradiente suave para o modo claro */
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+    color: #333;
+}
+
+/* Modo escuro */
+body.dark-mode {
+    background: linear-gradient(135deg, #1c1c1c, #121212); /* Gradiente para o modo escuro */
+    color: #ffffff;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #f8f9fa;
+    padding: 50px 0;
+    text-align: center;
+    transition: background-color 0.3s ease-in-out;
+}
+
+header h1 span {
+    color: #ff6f00;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #ff6f00 !important;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.navbar .navbar-brand .logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.navbar .nav-link {
+    color: white !important;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar .nav-link:hover {
+    color: #f0f0f0 !important;
+}
+
+/* Seções */
+section {
+    padding: 80px 20px; /* Mais espaçamento e ajuste para mobile */
+    margin: 20px 0;
+    transition: padding 0.3s ease-in-out;
+}
+
+section h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Imagens de alta qualidade */
+#sobre-mim img,
+#imoveis img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    object-fit: cover; /* Garante que a imagem se ajusta corretamente */
+}
+
+/* Carrossel */
+.carousel-item img {
+    max-height: 400px;
+    object-fit: cover;
+}
+
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 14px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+
+/* Estilos adicionais para o modo escuro */
+body.dark-mode .navbar {
+    background-color: #1c1c1c;
+}
+
+body.dark-mode footer {
+    background-color: #121212;
+}
+
+body.dark-mode .navbar .nav-link {
+    color: #fff !important;
+}
+
+body.dark-mode .navbar .nav-link:hover {
+    color: #f0f0f0 !important;
+}
+
+/* Alteração no modo escuro para adicionar imagem de fundo */
+body.dark-mode {
+    background: url('path-to-your-image-dark.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-blend-mode: overlay;
+    background-color: rgba(18, 18, 18, 0.7);
+}
+
+/* Efeitos de transição suaves */
+a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ff6f00;
+}
+
+/* Botões chamativos */
+.cta-button {
+    background-color: #ff6f00;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s ease-in-out;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.cta-button:hover {
+    background-color: #e65c00;
+    transform: scale(1.05);
+}
+
+/* Estilo de cartões com sombra */
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cta-button {
+        width: 100%;
+        padding: 12px 0;
+    }
+
+    section {
+        padding: 60px 15px;
+    }
+
+    header {
+        padding: 40px 0;
+    }
+}
+

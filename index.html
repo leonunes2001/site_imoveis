@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Robertiana Vegher é uma corretora de imóveis experiente, ajudando clientes a encontrar a casa dos sonhos com um atendimento personalizado e eficiente.">
+    <meta name="keywords" content="corretora de imóveis, compra de imóveis, imóveis, Robertiana Vegher, casa dos sonhos">
+    <title>Robertiana Vegher - Corretora de Imóveis</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Modo escuro */
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #f8f9fa;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        header h1 span {
+            color: #ff6f00;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #ff6f00 !important;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            transition: background-color 0.3s;
+        }
+
+        .navbar .navbar-brand .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+
+        .navbar .nav-link {
+            color: white !important;
+            transition: color 0.3s;
+        }
+
+        .navbar .nav-link:hover {
+            color: #f0f0f0 !important;
+        }
+
+        /* Seções */
+        section {
+            padding: 60px 0;
+        }
+
+        #sobre-mim img,
+        #imoveis img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Efeito de zoom suave nas imagens ao passar o mouse */
+        #sobre-mim img:hover, #imoveis img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Ajuste para as imagens dos imóveis (carrossel) */
+        .carousel-item img {
+            max-height: 600px !important;
+            width: 100% !important;
+            object-fit: cover;
+            border-radius: 10%;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Efeito de zoom suave nas imagens do carrossel */
+        .carousel-item img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Ajuste para imagens de perfil quadradas */
+        .img-fluid.square {
+            width: 65%;
+            height: 110%;
+            object-fit: cover;
+            margin: 0 auto;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Carrossel com transição suave */
+        .carousel-item {
+            transition: opacity 1s ease-in-out;
+        }
+
+        .carousel-inner {
+            transition: transform 0.5s ease;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        /* Botão de Modo Escuro */
+        button#modeToggle {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background-color: #99f10c;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s ease-in-out;
+            z-index: 1050;
+        }
+
+        button#modeToggle:hover {
+            background-color: #e65c00;
+            transform: scale(1.1);
+        }
+
+        body.dark-mode button#modeToggle {
+            background-color: #1e3c72;
+        }
+
+        body.dark-mode button#modeToggle:hover {
+            background-color: #174f6b;
+        }
+
+        /* Tipografia e hierarquia visual */
+        h1, h2 {
+            font-family: 'Lora', serif;
+            color: #333;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1e3c72;
+        }
+
+        #contato {
+            background-color: #f8f9fa;
+        }
+
+        #contato .form-control {
+            border-radius: 0.5rem;
+            margin-bottom: 20px;
+        }
+
+        #contato button {
+            background-color: #ff6f00;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        #contato button:hover {
+            background-color: #e65c00;
+        }
+
+        #depoimentos .carousel-item {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Linha ondulada */
+        .line-wave {
+            background-color: #ff6f00;
+            height: 10px;
+            margin: 20px 0;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="img/logo.png" alt="Logo" class="logo"> Robertiana Vegher
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#sobre-mim">Sobre Mim</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#imoveis">Imóveis</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#depoimentos">Depoimentos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                    <li class="nav-item"><a class="nav-link" href="admin.html">Admin</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cabeçalho -->
+    <header class="text-center py-5 bg-light">
+        <div class="container">
+            <h1>Olá, eu sou <span>Robertiana Vegher</span></h1>
+            <p class="lead">Seja bem-vindo(a)! Não vendemos imóveis e sim sonhos.</p>
+        </div>
+    </header>
+
+    <!-- Linha ondulada -->
+    <div class="line-wave"></div>
+
+    <!-- Sobre Mim -->
+    <section id="sobre-mim" class="py-5">
+        <div class="container text-center">
+            <h2>Sobre Mim</h2>
+            <p class="mt-3">"Robertiana Vegher é uma corretora de imóveis experiente e apaixonada por ajudar seus clientes a encontrarem o imóvel dos seus sonhos. Com um atendimento personalizado e focado nas necessidades individuais de cada cliente, ela se dedica a oferecer soluções eficazes para quem busca realizar um excelente investimento no mercado imobiliário."</p>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <img src="img/1.png" alt="Foto da profissional" class="img-fluid square">
+                </div>
+                <div class="col-md-6">
+                    <p>Robertiana se destaca pelo profissionalismo e conhecimento profundo do mercado local, o que a torna uma referência no setor imobiliário. Com anos de experiência, ela compreende as nuances e as particularidades de cada região, oferecendo aos seus clientes uma visão detalhada e precisa sobre as melhores oportunidades de investimento. Sua abordagem é marcada pela escuta atenta e pela busca incessante pelas soluções mais adequadas às necessidades de cada cliente.</p>
+                    <p>Seu compromisso vai além da simples negociação de imóveis. Robertiana se empenha em proporcionar uma experiência tranquila e satisfatória, sempre com transparência, ética e dedicação. Se você procura um profissional de confiança, com vasta experiência e profundo conhecimento do mercado imobiliário, Robertiana Vegher é a escolha certa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Imóveis -->
+    <section id="imoveis" class="py-5">
+        <div class="container">
+            <h2 class="text-center">Imóveis em Destaque</h2>
+            <div id="carouselExampleIndicators" class="carousel slide mt-4" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="img/imovel1.jpg" class="d-block w-100" alt="Imóvel 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/imovel2.jpg" class="d-block w-100" alt="Imóvel 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/imovel3.jpg" class="d-block w-100" alt="Imóvel 3">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section id="depoimentos" class="py-5">
+        <div class="container">
+            <h2 class="text-center">Depoimentos</h2>
+            <div id="carouselDepoimentos" class="carousel slide mt-4" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <p>"Robertiana é uma profissional incrível. Ela ajudou nossa família a encontrar o imóvel perfeito e todo o processo foi simples e sem estresse. Muito obrigada!" - João e Maria</p>
+                    </div>
+                    <div class="carousel-item">
+                        <p>"Com a ajuda da Robertiana, conseguimos encontrar a casa dos nossos sonhos! Seu conhecimento do mercado e atenção aos detalhes são excepcionais." - Carlos e Ana</p>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselDepoimentos" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselDepoimentos" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="py-5">
+        <div class="container">
+            <h2 class="text-center">Entre em Contato</h2>
+            <form action="#" method="post" class="mt-4">
+                <div class="mb-3">
+                    <label for="nome" class="form-label">Seu Nome</label>
+                    <input type="text" class="form-control" id="nome" placeholder="Seu nome completo" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Seu E-mail</label>
+                    <input type="email" class="form-control" id="email" placeholder="Seu melhor e-mail" required>
+                </div>
+                <div class="mb-3">
+                    <label for="mensagem" class="form-label">Sua Mensagem</label>
+                    <textarea class="form-control" id="mensagem" rows="4" placeholder="Deixe sua mensagem aqui" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Robertiana Vegher - Corretora de Imóveis</p>
+    </footer>
+
+    <!-- Modo escuro -->
+    <button id="modeToggle">Modo Escuro</button>
+
+    <!-- Scripts Bootstrap e JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"></script>
+    <script>
+        // Alternar entre modo claro e escuro
+        document.getElementById('modeToggle').addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
+</body>
+</html>
